@@ -1,0 +1,17 @@
+.maindiv {
+    background: #f3f2eb; 
+    position: relative;
+}
+.passwordIcon1{
+    position: absolute;
+    top:20.7rem ;
+    right:3.4rem;
+    cursor: pointer;
+
+}
+.passwordIcon2{
+    position: absolute;
+    top:25.2rem;
+    right:3.4rem;
+    cursor: pointer;
+}
