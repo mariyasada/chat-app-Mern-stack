@@ -5,11 +5,10 @@ export async function dbConnect() {
   try {
     const connectionInstance = await mongoose.connect(
       `${process.env.MONGODB_URI}/${DB_NAME}`
-      //   {
-      //     useNewUrlParser: true,
-      //     useUnifiedTopology: true,
-      //     serverSelectionTimeoutMS: 50000, // Increase timeout
-      //   }
+      // {
+      //   useNewUrlParser: true,
+      //   useUnifiedTopology: true,
+      // }
     );
     const connection = mongoose.connection;
 
