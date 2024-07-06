@@ -72,10 +72,12 @@ const Login = () => {
           type={ispasswordVisible ? "text" : "password"}
         />
       </div>
-      <div className="flex w-full justify-center gap-28 items-center max-sm:w-full">
-        <p className="text-md text-fuchsia-900">Don't have an account?</p>
+      <div className="flex w-full justify-center gap-28 items-center max-sm:w-full flex-wrap gap-4">
+        <div className="text-md text-fuchsia-900  max-[450px]:text-sm w-fit">
+          Don't have an account?
+        </div>
         <a
-          className="text-fuchsia-500  font-bold cursor-pointer underline underline-offset-4"
+          className="text-fuchsia-500  font-bold cursor-pointer underline underline-offset-4 max-[450px]:text-sm"
           onClick={() => navigate("/signup")}
         >
           Register here

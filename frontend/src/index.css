@@ -6,8 +6,8 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  background-color: #242424;
+  /* color-scheme: light dark;
+  background-color: #242424; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -32,6 +32,7 @@ h1 {
 }
 input{
   width: 98%;
+  background: white;
 }
 
 button {
@@ -46,13 +47,7 @@ button {
 }
 
 
-@media (prefers-color-scheme: light) {
-  :root {
-   background: white;
-  }
-  
-  
-}
+
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }

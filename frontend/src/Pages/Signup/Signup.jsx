@@ -176,7 +176,7 @@ const Signup = () => {
         </div>
       </div>
 
-      <div className="flex w-full justify-center gap-40 items-center max-sm:w-full">
+      <div className="flex w-full justify-center gap-40 items-center max-sm:w-full flex-wrap max-[450px]:gap-2">
         <p className="text-sm text-fuchsia-600">Already have account?</p>
         <a
           className="text-fuchsia-500  font-bold cursor-pointer underline underline-offset-4"

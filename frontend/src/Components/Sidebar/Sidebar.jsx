@@ -18,11 +18,11 @@ const Sidebar = () => {
     }
   };
   return (
-    <div className="border-r border-slate-200 p-4 flex flex-col w-1/3 relative">
+    <div className="border-r border-slate-200 p-4 flex flex-col w-1/3 relative max-[450px]:w-[180px]">
       <SearchInput />
       <Conversations />
       <button
-        className="bg-gradient-to-r w-11/12  bottom-4 absolute from-pink-600 to-purple-400 hover:from-purple-500 hover:to-pink-400 text-white"
+        className="bg-gradient-to-r w-11/12  bottom-4 absolute from-pink-600 to-purple-400 hover:from-purple-500 hover:to-pink-400 text-white max-[450px]:bottom-2 w-10/12"
         onClick={logoutHandler}
       >
         Logout
