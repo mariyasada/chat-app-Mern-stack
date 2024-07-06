@@ -26,11 +26,11 @@ const SearchInput = () => {
   };
 
   return (
-    <label className=" input input-bordered input-accent flex items-center gap-2 ">
+    <label className="input input-bordered input-accent flex items-center gap-2 ">
       <input
         type="text"
         placeholder="Search"
-        className=" w-full max-w-xs"
+        className=" w-full max-w-xs bg-white"
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
       />
