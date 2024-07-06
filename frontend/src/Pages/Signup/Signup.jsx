@@ -55,7 +55,7 @@ const Signup = () => {
 
       setLoading(true);
       const response = await axios.post("/api/v1/users/signup", userData);
-      if (response?.status === 200) {
+      if (response?.status === 201) {
         const userData = response?.data?.data?.user;
         localStorage.setItem("loggedIn-user", JSON.stringify(data?.data?.user));
         setLoggedInUser(userData);

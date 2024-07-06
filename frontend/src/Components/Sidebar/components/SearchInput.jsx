@@ -26,7 +26,7 @@ const SearchInput = () => {
   };
 
   return (
-    <label className="input input-bordered input-accent flex items-center gap-2 ">
+    <label className="input input-bordered input-accent flex items-center gap-2 bg-white ">
       <input
         type="text"
         placeholder="Search"
