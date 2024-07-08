@@ -55,11 +55,13 @@ const Signup = () => {
 
       setLoading(true);
       const response = await axios.post("/api/v1/users/signup", userData);
+      console.log(response, "check response");
       if (response?.status === 201) {
-        const userData = response?.data?.data?.user;
-        localStorage.setItem("loggedIn-user", JSON.stringify(data?.data?.user));
-        setLoggedInUser(userData);
+        const userData = response?.data;
+        localStorage.setItem("loggedIn-user", JSON.stringify(userData?.data));
+        setLoggedInUser(userData?.data);
         setLoading(false);
+        toast.success(response?.data?.message);
         navigate("/home");
       } else {
         toast.error(response.data.message);
