@@ -14,6 +14,7 @@ const Login = () => {
   });
   const [ispasswordVisible, setIsPasswordVisible] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [guestLoading, setGuestLoading] = useState(false);
   const navigate = useNavigate();
 
   const onChangeHandler = (e) => {
@@ -21,30 +22,45 @@ const Login = () => {
     setLoginUserData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const loginHanlder = async () => {
+  const loginHandler = async (guestLogin = false) => {
     try {
-      const { password, email } = loginUserData;
+      let loginData;
+
+      if (guestLogin) {
+        loginData = {
+          email: "aarzu@gmail.com",
+          password: "aarzu@123",
+        };
+      } else {
+        loginData = loginUserData;
+      }
+
+      const { email, password } = loginData;
       if ([email, password].some((field) => field?.trim() === "")) {
         toast.error("All fields are required!");
+        return;
       }
-      setLoading(true);
-      const response = await axios.post("/api/v1/users/login", loginUserData);
+
+      guestLogin ? setGuestLoading(true) : setLoading(true);
+
+      const response = await axios.post("/api/v1/users/login", loginData);
       if (response.status === 200) {
         const userData = response.data.data.user;
         localStorage.setItem("loggedIn-user", JSON.stringify(userData));
         setLoggedInUser(userData);
-        setLoading(false);
         navigate("/home");
+        toast.success(response.data.message);
       } else {
         toast.error(response.data.message);
-        setLoading(false);
       }
     } catch (err) {
       console.error(err);
       toast.error(err.response?.data?.message || err.message);
-      setLoading(false);
+    } finally {
+      guestLogin ? setGuestLoading(false) : setLoading(false);
     }
   };
+
   return (
     <div className="flex bg-slate-50 flex-col gap-3 px-10 py-7 h-full w-full rounded-3xl shadow-lg relative max-sm:w-full h-fit max-md:w-full h-fit">
       <p className="text-2xl  text-fuchsia-800 font-bold text-center">
@@ -99,12 +115,24 @@ const Login = () => {
       <div className="flex flex-col gap-1 items-center justify-center w-full mt-2">
         <button
           className="w-full shadow-2xl bg-gradient-to-r from-pink-600 to-purple-400 hover:from-purple-500 hover:to-pink-400 p-2 text rounded-md w-1/2 text-white font-bold"
-          onClick={loginHanlder}
+          onClick={() => loginHandler(false)}
         >
           {loading ? (
             <span className="loading loading-spinner "></span>
           ) : (
             "Login"
+          )}
+        </button>
+      </div>
+      <div className="flex flex-col gap-1 items-center justify-center w-full mt-2">
+        <button
+          className="w-full shadow-2xl bg-gradient-to-r from-pink-600 to-purple-400 hover:from-purple-500 hover:to-pink-400 p-2 text rounded-md w-1/2 text-white font-bold"
+          onClick={() => loginHandler(true)}
+        >
+          {guestLoading ? (
+            <span className="loading loading-spinner "></span>
+          ) : (
+            "Guest Login"
           )}
         </button>
       </div>
