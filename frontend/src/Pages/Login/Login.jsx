@@ -7,7 +7,7 @@ import { useNavigate } from "react-router";
 import { useAuth } from "../../context/AuthContext";
 
 const Login = () => {
-  const { loggedInUser, setLoggedInUser } = useAuth();
+  const { setLoggedInUser } = useAuth();
   const [loginUserData, setLoginUserData] = useState({
     email: "",
     password: "",
